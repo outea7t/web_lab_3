@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сити Класс - Контакты</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- navbar -->
+    <div id="navbar"></div>
+
+
+  <br>
+
+  <!-- main -->
+  <table class="container layout">
+    <tr>
+      <!-- sidebar -->
+      <td class="sidebar">
+        <div id="sidebar"></div>
+      </td>
+
+      <!-- main content -->
+      <td class="content">
+        <h2>Напишите нам</h2>
+
+        <!-- форма обратной связи -->
+        <form action="#" method="post">
+          <p>
+            <label>Имя<br>
+              <input type="text" name="name" class="contacts-input" required>
+            </label>
+          </p>
+          <p>
+            <label>Email<br>
+              <input type="email" name="email" class="contacts-input" required>
+            </label>
+          </p>
+          <p>
+            <label>Тема<br>
+              <input type="text" name="subject" class="contacts-input" required>
+            </label>
+          </p>
+          <p>
+            <label>Сообщение<br>
+              <textarea name="message" rows="6" class="contacts-input" style="width:100%;" required></textarea>
+            </label>
+          </p>
+          <p>
+            <label>Телефон (необязательно)<br>
+              <input type="tel" name="phone" class="contacts-input">
+            </label>
+          </p>
+          <p>
+            <button type="submit" class="contacts-button">Отправить</button>
+          </p>
+        </form>
+
+        <hr>
+
+        <h2>Адрес</h2>
+        <p>
+          Телефон: +7 (913) 917-38-80<br>
+          Email: order@citi-class.ru<br>
+          Адрес: 630039, г. Новосибирск, ул. Автогенная, 132 к2
+        </p>
+
+        <!-- карта Yandex (реальная, с поиском адреса) -->
+        <div class="yandex-map">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%90%D0%B2%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%2C%20132%20%D0%BA2&z=16&lang=ru_RU"
+            width="100%" height="320" frameborder="0" allowfullscreen
+            style="display:block;">
+          </iframe>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- footer -->
+    <div id="footer"></div>
+    <script type="module" src="/src/partials-loader.ts"></script>
+  </body>
+</html>

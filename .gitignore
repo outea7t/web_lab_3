@@ -1,24 +1,64 @@
-# Nestjs specific
-/dist
-/node_modules
-/build
-/tmp
+############################
+# Node / JS / TS
+############################
 
-# Logs
+# Любые node_modules на любом уровне
+node_modules/
+**/node_modules/
+shop-api/node_modules/*
+shop-client/node_modules/*
+
+# Логи
 logs
 *.log
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# dotenv environment variable files
-.env
-.env.development
-.env.test
-.env.production
+############################
+# Build / cache / coverage
+############################
 
-# temp directory
-.temp
-.tmp
+dist/
+**/dist/
+
+build/
+**/build/
+
+tmp/
+temp/
+**/tmp/
+**/temp/
+
+.cache/
+**/.cache/
+
+coverage/
+**/coverage/
+
+############################
+# IDE / OS junk
+############################
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+############################
+# Frontend build dirs (если появятся)
+############################
+
+**/public/build/
+**/out/
+**/.next/
+
+############################
+# Env / secrets
+############################
+
+.env
+.env.*

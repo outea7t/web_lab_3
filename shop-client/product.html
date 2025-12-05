@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сити Класс - Товар</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- navbar -->
+    <div id="navbar"></div>
+
+    <br>
+
+    <!-- main -->
+    <table class="container layout">
+      <tr>
+        <!-- sidebar -->
+        <td class="sidebar">
+          <div id="sidebar"></div>
+        </td>
+
+        <!-- main content -->
+        <td class="content">
+          <h2 id="product-title">Товар</h2>
+
+          <table width="100%" cellspacing="0" cellpadding="10" border="0" class="product-page">
+            <tr>
+              <td width="40%" align="center" valign="top">
+                <img
+                  id="product-image"
+                  src=""
+                  alt=""
+                  width="320"
+                  style="max-width:100%; border:1px solid #e3e5ea; border-radius:10px;"
+                >
+              </td>
+              <td width="60%" valign="top">
+                <h3>Товар</h3>
+                <p id="product-subtitle" class="brief-description" style="margin-top:0;"></p>
+                <p id="product-desc" class="detailed-description"></p>
+                <p class="product-price" id="product-price" style="font-size:18px; font-weight:600;"></p>
+
+                <h3 class="category-title" style="margin-top:16px;">Характеристики</h3>
+                <ul id="product-specs" style="margin:0; padding-left:18px;"></ul>
+
+                <p style="margin-top:20px;">
+                  <a href="catalog.html" class="btn-login">← Назад в каталог</a>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <h3 class="category-title" style="margin-top:16px;">Характеристики</h3>
+          <ul id="product-specs" style="margin:0; padding-left:18px;"></ul>
+
+          <h3 class="category-title" style="margin-top:24px;">Отзывы</h3>
+          <div id="reviews-block">
+            <div id="reviews-list"></div>
+            <div id="reviews-form-wrapper" style="margin-top:16px;"></div>
+          </div>
+
+          <p style="margin-top:20px;">
+            <a href="catalog.html" class="btn-login">← Назад в каталог</a>
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- footer -->
+    <div id="footer"></div>
+
+    <!-- partials + логика страницы -->
+    <script type="module" src="/src/partials-loader.ts"></script>
+    <script type="module" src="/src/product-page.ts"></script>
+  </body>
+</html>

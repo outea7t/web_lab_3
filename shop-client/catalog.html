@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сити Класс - Каталог</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- navbar -->
+    <div id="navbar"></div>
+
+
+    <br>
+
+    <!-- main -->
+    <table class="container layout">
+      <tr>
+      <!-- sidebar -->
+      <td class="sidebar">
+        <div id="sidebar"></div>
+      </td>
+        <!-- main content (Только этот блок отличается) -->
+        <td class="content">
+          <h2>Каталог</h2>
+
+          <!-- Категория 1: Мужская обувь -->
+          <h3 id="men" class="category-title">Мужская обувь</h3>
+          <table
+            class="catalog-table"
+            id="catalog-men"
+            width="100%"
+            cellspacing="0"
+            cellpadding="10"
+            border="0"
+          >
+            <!-- сюда JS вставит <tr> с товарами -->
+          </table>
+
+          <!-- Категория 2: Женская обувь -->
+          <h3 id="women" class="category-title">Женская обувь</h3>
+          <table
+            class="catalog-table"
+            id="catalog-women"
+            width="100%"
+            cellspacing="0"
+            cellpadding="10"
+            border="0"
+          ></table>
+
+          <!-- Категория 3: Аксессуары -->
+          <h3 id="accessories" class="category-title">Аксессуары</h3>
+          <table
+            class="catalog-table"
+            id="catalog-accessories"
+            width="100%"
+            cellspacing="0"
+            cellpadding="10"
+            border="0"
+          ></table>
+
+          <p style="font-size: 0;"></p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- footer -->
+    <div id="footer"></div>
+    
+    <script type="module" src="/src/partials-loader.ts"></script>
+    <script type="module" src="/src/catalog-page.ts"></script>
+  </body>
+</html>

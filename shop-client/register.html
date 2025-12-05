@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сити Класс — Регистрация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- header -->
+  <div id="header"></div>
+
+  <!-- navbar -->
+  <div id="navbar"></div>
+
+  <br>
+
+  <!-- main -->
+  <table class="container layout">
+    <tr>
+      <!-- sidebar -->
+      <td class="sidebar">
+        <div id="sidebar"></div>
+      </td>
+
+      <!-- content -->
+      <td class="content">
+        <h2>Регистрация</h2>
+
+        <table class="register-card" width="100%" cellspacing="0" cellpadding="4" border="0">
+          <tr>
+            <td>
+              <form id="register-form" action="#" method="post" novalidate>
+                <!-- Однострочные поля -->
+                <div class="form-row">
+                  <label>Имя *</label>
+                  <input type="text" name="firstName" class="input-text" required>
+                </div>
+
+                <div class="form-row">
+                  <label>Фамилия *</label>
+                  <input type="text" name="lastName" class="input-text" required>
+                </div>
+
+                <div class="form-row">
+                  <label>Email *</label>
+                  <input type="email" name="email" class="input-text" required>
+                </div>
+
+                <div class="form-row">
+                  <label>Пароль *</label>
+                  <input type="password" name="password" class="input-text" minlength="6" required>
+                  <div class="hint">Минимум 6 символов</div>
+                </div>
+
+                <!-- Радиокнопки (radio) -->
+                <div class="form-row">
+                  <label>Пол</label>
+                  <div class="choices">
+                    <label><input type="radio" name="gender" value="male"> Мужской</label>
+                    <label><input type="radio" name="gender" value="female"> Женский</label>
+                    <label><input type="radio" name="gender" value="na" checked> Не указывать</label>
+                  </div>
+                </div>
+
+                <!-- Выпадающий список (select) -->
+                <div class="form-row">
+                  <label>Город</label>
+                  <select name="city" class="input-text" style="height:44px;">
+                    <option value="">Выберите город</option>
+                    <option>Новосибирск</option>
+                    <option>Москва</option>
+                    <option>Санкт-Петербург</option>
+                    <option>Екатеринбург</option>
+                    <option>Казань</option>
+                  </select>
+                </div>
+
+                <!-- Многострочное поле (textarea) -->
+                <div class="form-row">
+                  <label>О себе (необязательно)</label>
+                  <textarea name="about" rows="5" class="input-text" placeholder="Коротко о себе..."></textarea>
+                </div>
+
+                <!-- Прокручивающееся текстовое поле -->
+                <div class="form-row">
+                  <label>Правила сервиса</label>
+                  <div class="scroll-text" id="termsBox">
+                    <p><b>Условия использования:</b></p>
+                    <p>1. Регистрация доступна пользователям старше 16 лет.</p>
+                    <p>2. Мы обрабатываем ваши данные для оформления заказов и улучшения сервиса.</p>
+                    <p>3. Вы можете удалить данные, обратившись в службу поддержки.</p>
+                    <p>4. Запрещено размещать противоправный контент.</p>
+                    <p>5. Подробная политика доступна на странице «О нас».</p>
+                    <p>… (демо-текст для прокрутки) …</p>
+                    <p>Завершение условий. Спасибо, что дочитали!</p>
+                  </div>
+                </div>
+
+                <!-- Флажок (checkbox) -->
+                <div class="form-row">
+                  <div class="choices">
+                    <label><input type="checkbox" name="agree" id="agree" required> Подтверждаю согласие с условиями *</label>
+                    <label><input type="checkbox" name="marketing"> Хочу получать новости и акции</label>
+                  </div>
+                </div>
+
+                <!-- Переключатель (toggle switch) -->
+                <div class="form-row form-inline">
+                  <span>Уведомления о статусе заказа</span>
+                  <label class="switch">
+                    <input type="checkbox" name="notify" checked aria-label="Уведомления">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <!-- Кнопка подтверждения -->
+                <div class="form-row">
+                  <button type="submit" class="btn-login">Зарегистрироваться</button>
+                </div>
+
+                <div class="hint">Поля, помеченные *, обязательны для заполнения.</div>
+              </form>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <!-- footer -->
+  <div id="footer"></div>
+    <script>
+      (function () {
+        const form = document.getElementById('register-form');
+        const agree = document.getElementById('agree');
+        const terms = document.getElementById('termsBox');
+
+        const API_BASE = 'http://localhost:3000'; // порт Nest-приложения
+
+        let termsScrolled = false;
+        terms.addEventListener('scroll', () => {
+          const atBottom = terms.scrollTop + terms.clientHeight >= terms.scrollHeight - 4;
+          if (atBottom) termsScrolled = true;
+        });
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+
+          // Базовая проверка полей
+          if (!form.firstName.value.trim() ||
+              !form.lastName.value.trim() ||
+              !form.email.value.trim() ||
+              !form.password.value.trim()) {
+            alert('Пожалуйста, заполните обязательные поля.');
+            return;
+          }
+
+          if (!agree.checked) {
+            alert('Необходимо согласие с условиями.');
+            return;
+          }
+
+          // Если хочешь требовать прокрутку:
+          // if (!termsScrolled) {
+          //   alert('Прокрутите условия до конца.');
+          //   return;
+          // }
+
+          const payload = {
+            // поля, которые ждёт бекенд
+            email: form.email.value.trim().toLowerCase(),
+            password: form.password.value,
+            role: 'user', // регистрацию обычного пользователя
+
+            firstName: form.firstName.value.trim(),
+            lastName: form.lastName.value.trim(),
+            gender: form.gender.value,      // 'male' | 'female' | 'na'
+            city: form.city.value || null,
+            about: form.about.value.trim() || null,
+            marketing: !!form.marketing.checked,
+            notify: !!form.notify.checked,
+          };
+
+          try {
+            const response = await fetch(API_BASE + '/auth/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              credentials: 'include',
+              body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+              let message = 'Ошибка регистрации';
+              try {
+                const err = await response.json();
+                if (typeof err.message === 'string') message = err.message;
+                if (Array.isArray(err.message)) message = err.message.join('\n');
+              } catch (_) {}
+              alert(message);
+              return;
+            }
+
+            const data = await response.json();
+            // data.accessToken, data.user и т.п.
+            if (data.accessToken) {
+              localStorage.setItem('accessToken', data.accessToken);
+            }
+
+            alert('Регистрация успешно выполнена!');
+            window.location.href = 'catalog.html';
+          } catch (error) {
+            console.error(error);
+            alert('Не удалось связаться с сервером.');
+          }
+        });
+    })();
+  </script>
+  <script type="module" src="/src/partials-loader.ts"></script>
+</body>
+</html>
