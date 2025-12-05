@@ -1,4 +1,5 @@
-# web_lab_3 – “City Class” Shoe Store
+# web_lab_3 – “City Class” Shoe Store 
+Author: Maslov Pavel IDB-23-16
 
 Training project for the **“Web Technologies Basics”** course.  
 It implements a small online shoe store **“Сити Класс”** with:
