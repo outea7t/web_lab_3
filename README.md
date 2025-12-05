@@ -29,7 +29,7 @@ PGPASSWORD=your_password pg_dump \
   shop_db > db/shop_db_dump.sql
 ```
 
-Copy `.env.example` to `.env` and fill in your values:
+Copy `.env.example` to `.env` in `/shop-api/.env` and fill in your values:
 
 ```env
 # DB
@@ -49,6 +49,18 @@ JWT_ACCESS_EXPIRES_IN=900          # 15 minutes in seconds
 
 JWT_REFRESH_SECRET=refresh_secret_super
 JWT_REFRESH_EXPIRES_IN=604800      # 7 days in seconds
+```
+
+To run shop-api use (from project root)
+```
+cd shop-api
+npm run dev
+```
+
+To run shop-client use (from project root)
+```
+cd shop-client
+npm run dev 
 ```
 ---
 
@@ -141,6 +153,8 @@ on every page.
     - main image (from `product.images[0]` or `product.image`);
     - name, short description, formatted price;
     - “Подробнее” link to `product.html?id=<product.alias>`.
+  <img width="1067" height="1370" alt="image" src="https://github.com/user-attachments/assets/717563c3-07c9-4390-92f0-ade2ded4283c" />
+
 
 - `src/product-page.ts`
   - Reads `id` (`alias`, like `"p1"`) from query string: `product.html?id=p1`.
@@ -154,6 +168,7 @@ on every page.
   - Renders reviews:
     - shows a list of reviews (author name + stars + text);
     - if there are no reviews: “Пока нет отзывов. Вы можете быть первым.”
+    <img width="1024" height="763" alt="image" src="https://github.com/user-attachments/assets/3133326c-6d82-4b89-be89-04039583172b" />
   - **Review form**:
     - Available only if a current user is detected (from `localStorage` or `/auth/profile`).
     - Creates review via:
@@ -164,6 +179,8 @@ on every page.
     - If current user has `role: 'admin'`:
       - Each review shows a “Удалить” button.
       - On click: `DELETE /products/:productId/reviews/:reviewId` (protected by `JwtAuthGuard` + `RolesGuard('admin')` on backend).
+    <img width="782" height="104" alt="image" src="https://github.com/user-attachments/assets/2c70cfc1-db93-4503-ac7b-b7982f0b8775" />
+
 
 - `src/admin-page.ts` (if present)
   - Simple admin panel page.
@@ -174,6 +191,7 @@ on every page.
     - Allows:
       - creating new products with a form (calls `POST /products` – admin only);
       - deleting products via `DELETE /products/:id` (if you added that endpoint on backend).
+<img width="990" height="1381" alt="image" src="https://github.com/user-attachments/assets/56434a2e-06a5-4b2d-bb5e-d39bc4ca03b2" />
 
 ### Backend (NestJS, under `src/`)
 
@@ -228,3 +246,5 @@ on every page.
   - `RolesGuard` – checks `payload.role` against `@Roles('admin')`.
 
 ---
+
+
